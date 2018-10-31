@@ -1,9 +1,9 @@
 {
-    "name": "anton/php-learning",
+    "name": "andrew/php-learning",
     "authors": [
         {
-            "name": "7R41N33",
-            "email": "chepenkoanton2011@yandex.ru"
+            "name": "a.cherabaev",
+            "email": "a.cherabaev@mediasoft.team"
         }
     ],
     "require": {
