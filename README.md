@@ -23,3 +23,5 @@ make cs
 ```
 make serve
 ```
+
+Проверка git push/pull
