@@ -14,6 +14,14 @@ class Solution
      */
     public static function upCaseWordGreaterThanLen($text, $len)
     {
+        $resArr = [];
+
+        foreach (explode(' ', $text) as $key => $word) {
+            if (strlen($word) > $len)
+                $resArr[$key] = strtoupper($word);
+        }
+
+        return implode(' ', $resArr);
     }
 
     /**
@@ -30,6 +38,19 @@ class Solution
      */
     public static function decodeMorse($morseCode, $dictionary)
     {
+        $wordsArr = explode('   ', trim($morseCode));
+        $resArr = [];
+
+        foreach ($wordsArr as $key => $word) {
+            $letterArr = explode(' ', trim($word));
+            $realWord = '';
+            foreach ($letterArr as $letter) {
+                $realWord .= $dictionary[$letter];
+            }
+            $resArr[$key] = $realWord;
+        }
+
+        return implode(' ', $resArr);
     }
 
     /**
@@ -42,5 +63,17 @@ class Solution
      */
     public static function anagrams($word, $words)
     {
+        $resArr =[];
+        $exampleLettersArr = str_split($word);
+        sort($exampleLettersArr);
+
+        foreach ($words as $gword) {
+            $wordLettersArr = str_split($gword);
+            sort($wordLettersArr);
+            if (array_diff_assoc($exampleLettersArr, $wordLettersArr) == [] && count($exampleLettersArr) == count($wordLettersArr))
+                $resArr[] = $gword;
+        }
+
+        return $resArr;
     }
 }
