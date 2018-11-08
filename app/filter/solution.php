@@ -19,6 +19,11 @@ class Solution
      */
     public static function filterActive($vacancies)
     {
+        return self::getIds(
+            array_filter($vacancies, function($v) {
+                return $v['isActive'] =='Y';
+            })
+        );
     }
 
     /**
@@ -31,6 +36,11 @@ class Solution
      */
     public static function compareRatings($vacancies, $rating)
     {
+        return self::getIds(
+            array_filter($vacancies, function($v) use ($rating) {
+                return $v['isActive'] =='Y' && (float)$v['rating'] > $rating;
+            })
+        );
     }
 
     /**
@@ -43,6 +53,11 @@ class Solution
      */
     public static function containsString($vacancies, $str)
     {
+        return self::getIds(
+            array_filter($vacancies, function($v) use ($str) {
+                return stripos($v['name'], $str) !== false;
+            })
+        );
     }
 
     /**
