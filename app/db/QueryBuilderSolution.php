@@ -31,6 +31,16 @@ class QueryBuilderSolution
 
     public function findVacancyTags($vacancyId)
     {
+        $tags = $this->connection->table('tags')
+            ->join('vacancies_tags', 'tags.id', '=', 'tagId')
+            ->join('vacancies', 'vacancyId', '=', 'vacancies.id')
+            ->select('tags.name')
+            ->where('vacancies.id', '=', $vacancyId)
+            ->get()
+            ->pluck('name')
+            ->toArray();
+
+        return $tags;
     }
 
     public function findVacanciesWithTags()
